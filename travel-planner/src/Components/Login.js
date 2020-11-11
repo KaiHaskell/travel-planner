@@ -54,14 +54,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = () => {
-    const [login, setLogin] = useState(initialState)
+    // const [login, setLogin] = useState(initialState)
 
-    const userHandleChange = e => {
-        setLogin({
-            ...data,
-            [e.target.name]: e.target.value
-        })
-    }
+    // const userHandleChange = e => {
+    //     setLogin({
+    //         ...data,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
   const classes = useStyles();
 
   return (
