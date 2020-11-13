@@ -54,14 +54,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = () => {
-    // const [login, setLogin] = useState(initialState)
+    const [login, setLogin] = useState(initialState)
 
-    // const userHandleChange = e => {
-    //     setLogin({
-    //         ...data,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
+    const userHandleChange = e => {
+        setLogin({
+            ...login,
+            [e.target.name]: e.target.value
+        })
+    }
   const classes = useStyles();
 
   return (
@@ -80,11 +80,13 @@ const Login = () => {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="login"
             label="Email Address"
-            name="email"
-            autoComplete="email"
+            name="login"
+            autoComplete="login"
             autoFocus
+            value={login.username}
+            onChange={userHandleChange}
           />
           <TextField
             variant="outlined"
@@ -96,19 +98,26 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={login.password}
+            onChange={userHandleChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
+            disabled={login.isSubmitting}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            {login.isSubmitting ? (
+              "Loading..."
+            ) : (
+              "Sign In"
+            )}
           </Button>
           <Grid container>
             <Grid item xs>
